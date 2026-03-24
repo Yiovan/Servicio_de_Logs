@@ -80,15 +80,15 @@ def get_logs(
     
     
     auth_value = Authorization
-    if not auth_value and token:
-        auth_value = f"token {token}"
+    # if not auth_value and token:
+    #     auth_value = f"token {token}"
     
-    if not Authorization or not Authorization.startswith("Token "):
-        raise HTTPException(status_code=401, detail={"error": "Quién sos, bro?"})
+    # if not Authorization or not Authorization.startswith("Token "):
+    #     raise HTTPException(status_code=401, detail={"error": "Quién sos, bro?"})
     
-    token = Authorization.split(" ")[1]
-    if token not in VALID_TOKENS:
-        raise HTTPException(status_code=401, detail={"error": "Quién sos, bro?"})
+    # token = Authorization.split(" ")[1]
+    # if token not in VALID_TOKENS:
+    #     raise HTTPException(status_code=401, detail={"error": "Quién sos, bro?"})
 
 
     query = "SELECT * FROM logs WHERE 1=1"
