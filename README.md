@@ -40,7 +40,7 @@ Necesitarás dos terminales: una para el servidor y otra para el cliente.
 En la primera terminal, ejecuta el siguiente comando para iniciar el servidor FastAPI con `uvicorn`. La opción `--reload` hace que el servidor se reinicie automáticamente si detecta cambios en el código.
 
 ```bash
-uvicorn main:app --reload
+python -m uvicorn main:app --reload
 ```
 
 Deberías ver una salida similar a esta, indicando que el servidor está en funcionamiento:

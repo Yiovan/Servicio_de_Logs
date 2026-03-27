@@ -1,7 +1,7 @@
 import requests
 import random
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 
 URL = "http://127.0.0.1:8000/logs"
 
@@ -35,13 +35,13 @@ if __name__ == "__main__":
 
             logs_para_enviar = []
                 
-            numero_de_logs = 200
+            numero_de_logs = 20
             print("Voy a generar", numero_de_logs, "logs.")
 
             for i in range(numero_de_logs):
                 
                 un_log = {
-                    "timestamp": datetime.utcnow().isoformat() + "Z",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
                     "service": nombre_del_servicio,
                     "severity": random.choice(SEVERITIES),
                     "message": random.choice(MESSAGES)
@@ -62,4 +62,4 @@ if __name__ == "__main__":
             time.sleep(1)
             
         print("\n--- Ronda terminada, esperando 10 segundos... ---\n")
-        time.sleep(1)
+        time.sleep(10)

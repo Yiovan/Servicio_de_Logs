@@ -38,7 +38,6 @@ class Log(BaseModel):
 # Endpoint para recibir los logs
 @app.post("/logs")
 def receive_logs(logs: List[Log], Authorization: str = Header(None)):
-    # --- Verificación del token (copiada aquí) ---
     if not Authorization or not Authorization.startswith("Token "):
         raise HTTPException(status_code=401, detail={"error": "Quién sos, bro?"})
     
@@ -107,7 +106,7 @@ def get_logs(
         query = query + " AND received_at <= ?"
         params.append(received_at_end)
 
-    query = query + " ORDER BY timestamp DESC LIMIT 100"
+    query = query + " ORDER BY timestamp DESC LIMIT 1"
     
     cursor.execute(query, tuple(params))
     filas_de_logs = cursor.fetchall() 
